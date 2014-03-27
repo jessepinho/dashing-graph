@@ -2,7 +2,7 @@ class Graph < Hash
 
   class Series
 
-    attr_accessor :name, :data, :color
+    attr_reader :name, :data, :color
 
     def initialize name, color
       @name = name
