@@ -24,7 +24,7 @@ db[:orders]
     graph.add_point 'Orders', time, 1
   end
 
-send_event('users-and-orders-per-day', graph.graphify)
+send_event('users-and-orders-per-day', graph)
 ```
 
 ## To do
