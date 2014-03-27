@@ -26,3 +26,5 @@ db[:orders]
 
 send_event('users-and-orders-per-day', graph.graphify)
 ```
+
+Thanks to [Tim Macdonald](https://github.com/tsmacdonald) for writing all the original graph-data-mangling code that made this class possible.
