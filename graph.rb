@@ -1,4 +1,4 @@
-class Graph
+class Graph < Hash
 
   class Series
 
@@ -37,6 +37,15 @@ class Graph
 
   def include_totals! name = 'Total', color = '#515151'
     @series[name] = totals_series name, color
+  end
+
+  # Dashing's <tt>send_event()</tt> method calls <tt>.to_json()</tt> on the
+  # object passed into it before sending it to the browser. At this point, we
+  # want to add the <tt>:points</tt> key to the hash with the graph data. This
+  # way, we can simply pass a Graph object directly to <tt>send_event()</tt>.
+  def to_json
+    self[:points] = graphify
+    super
   end
 
   private
