@@ -32,4 +32,4 @@ send_event('users-and-orders-per-day', graph)
 - Provide more usage examples in the README.
 - Add better/more code documentation.
 
-Thanks to [Tim Macdonald](https://github.com/tsmacdonald) for writing all the original graph-data-mangling code that made this class possible.
+Thanks to [Tim Macdonald](https://github.com/tsmacdonald) for writing all the original graph-data-massaging code that made this class possible.

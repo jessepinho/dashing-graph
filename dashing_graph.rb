@@ -1,4 +1,4 @@
-class Graph < Hash
+class DashingGraph < Hash
 
   class Series
 
