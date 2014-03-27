@@ -35,38 +35,35 @@ class Graph
     @series[series].add_point x, y
   end
 
-  def totals_series name, color
-    totals_series = Series.new name, color
-    @series.each do |name, series|
-      series.data.each do |x, y|
-        totals_series.add_point x, y
-      end
-    end
-    totals_series
-  end
-
   def include_totals! name = 'Total', color = '#515151'
     @series[name] = totals_series name, color
   end
 
-  # Prepare data for graphing. The hash returned by this method is ready to be
-  # sent to a Rickshaw graph via <tt>send_event()</tt>.
-  def graphify
-    graphified = @series.map do |name, series|
-      {
-        name: series.name,
-        color: series.color,
-        data: series.data.map { |x, y|
-          {
-            x: x,
-            y: y
+  private
+
+    # Prepare data for graphing.
+    def graphify
+      graphified = @series.map do |name, series|
+        {
+          name: series.name,
+          color: series.color,
+          data: series.data.map { |x, y|
+            {
+              x: x,
+              y: y
+            }
           }
         }
-      }
+      end
     end
 
-    {
-      points: graphified
-    }
-  end
+    def totals_series name, color
+      totals_series = Series.new name, color
+      @series.each do |name, series|
+        series.data.each do |x, y|
+          totals_series.add_point x, y
+        end
+      end
+      totals_series
+    end
 end
