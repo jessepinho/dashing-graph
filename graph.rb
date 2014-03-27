@@ -16,8 +16,6 @@ class Graph
     end
   end
 
-  attr_accessor :series
-
   def initialize series
     @series = {}
     series.each { |name, color|
