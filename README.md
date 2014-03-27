@@ -1,5 +1,5 @@
 # Dashing-Graph
-A class for preparing graphs for [Dashing](https://github.com/Shopify/dashing).
+A class for preparing Rickshaw graphs for [Dashing](https://github.com/Shopify/dashing).
 
 The following example uses the Graph class along with the [Sequel](https://github.com/jeremyevans/sequel) gem to count the number of users and orders per day, then plot them as separate series on the graph.
 
