@@ -1,5 +1,4 @@
-class DashingGraph < Hash
-
+class DashingGraph
   class Series
 
     attr_reader :name, :data, :color
@@ -21,6 +20,7 @@ class DashingGraph < Hash
     series.each { |name, color|
       @series[name] = Series.new name, color
     }
+    @graph_hash = {}
   end
 
   def add_point series, x, y
@@ -39,20 +39,27 @@ class DashingGraph < Hash
     @series[name] = totals_series name, color
   end
 
+  def [](key)
+    @graph_hash[key]
+  end
+
+  def []=(key, val)
+    @graph_hash[key] = val
+  end
+
   # Dashing's <tt>send_event()</tt> method calls <tt>.to_json()</tt> on the
   # object passed into it before sending it to the browser. At this point, we
   # want to add the <tt>:points</tt> key to the hash with the graph data. This
   # way, we can simply pass a Graph object directly to <tt>send_event()</tt>.
   def to_json
-    self[:points] = graphify
-    super
+    @graph_hash.merge(points: graphify).to_json
   end
 
   private
 
     # Prepare data for graphing.
     def graphify
-      graphified = @series.map do |name, series|
+      @series.map do |name, series|
         {
           name: series.name,
           color: series.color,
