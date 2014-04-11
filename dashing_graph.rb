@@ -61,7 +61,7 @@ class DashingGraph < Hash
               x: x,
               y: y
             }
-          }
+          }.sort_by { |point| point[:x] }
         }
       end
     end
