@@ -39,6 +39,10 @@ class DashingGraph
     @series[name] = totals_series name, color
   end
 
+  def [](key)
+    @graph_hash[key]
+  end
+
   def []=(key, val)
     @graph_hash[key] = val
   end
