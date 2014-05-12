@@ -11,7 +11,7 @@ class DashingGraph
 
     def add_point x, y
       @data[x.to_i] ||= 0
-      @data[x.to_i] += y.to_i
+      @data[x.to_i] += y.to_f
     end
   end
 
